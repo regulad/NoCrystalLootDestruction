@@ -5,6 +5,7 @@ import org.bstats.bukkit.Metrics;
 import org.bukkit.entity.EnderCrystal;
 import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -16,10 +17,10 @@ public class NoCrystalLootDestruction extends JavaPlugin implements Listener {
     @Getter
     private Metrics metrics;
 
-    @EventHandler
-    public void onItemHurt(final @NotNull EntityDamageByEntityEvent entityDamageByEntityEvent) {
-        if (entityDamageByEntityEvent.getDamager() instanceof EnderCrystal && entityDamageByEntityEvent.getEntity() instanceof Item) {
-            entityDamageByEntityEvent.setCancelled(true);
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGHEST)
+    public void onItemHurt(final @NotNull EntityDamageByEntityEvent damageEvent) {
+        if (damageEvent.getDamager() instanceof EnderCrystal && damageEvent.getEntity() instanceof Item) {
+            damageEvent.setCancelled(true);
         }
     }
 
