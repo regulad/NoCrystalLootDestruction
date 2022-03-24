@@ -6,4 +6,4 @@ pluginManagement {
 }
 
 // fixme
-rootProject.name = "papergradletemplate"
+rootProject.name = "nocrystallootdestruction"

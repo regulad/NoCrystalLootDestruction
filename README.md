@@ -1,3 +1,3 @@
-# PaperGradleTemplate
+# NoCrystalLootDestruction
 
-A template plugin for Minecraft Paper Plugins with Gradle.
+Stops end crystals from destroying loot. No configuration.

@@ -12,7 +12,7 @@ plugins {
 // fixme
 group = "xyz.regulad"
 version = "1.0.0-SNAPSHOT"
-description = "A template plugin for Minecraft Paper Plugins with Gradle."
+description = "Stops end crystals from destroying loot. No configuration."
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(17))
@@ -76,7 +76,7 @@ publishing {
 */
 
 bukkit {
-    name = "PaperGradleTemplate" // fixme
+    name = "NoCrystalLootDestruction" // fixme
     main = "${rootProject.group}.${rootProject.name}.${name}"
     apiVersion = "1.18"
     authors = listOf("regulad")
