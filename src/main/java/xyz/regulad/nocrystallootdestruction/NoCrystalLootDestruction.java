@@ -2,7 +2,8 @@ package xyz.regulad.nocrystallootdestruction;
 
 import lombok.Getter;
 import org.bstats.bukkit.Metrics;
-import org.bukkit.entity.EntityType;
+import org.bukkit.entity.EnderCrystal;
+import org.bukkit.entity.Item;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -17,7 +18,7 @@ public class NoCrystalLootDestruction extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onItemHurt(final @NotNull EntityDamageByEntityEvent entityDamageByEntityEvent) {
-        if (entityDamageByEntityEvent.getDamager().getType().equals(EntityType.ENDER_CRYSTAL) && entityDamageByEntityEvent.getEntity().getType().equals(EntityType.DROPPED_ITEM)) {
+        if (entityDamageByEntityEvent.getDamager() instanceof EnderCrystal && entityDamageByEntityEvent.getEntity() instanceof Item) {
             entityDamageByEntityEvent.setCancelled(true);
         }
     }
@@ -28,6 +29,8 @@ public class NoCrystalLootDestruction extends JavaPlugin implements Listener {
         instance = this;
         // Setup Metrics
         this.metrics = new Metrics(this, 14725);
+        // Register events
+        this.getServer().getPluginManager().registerEvents(this, this);
     }
 
     @Override
